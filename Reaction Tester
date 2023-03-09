@@ -1,0 +1,25 @@
+from microbit import
+import random
+
+# Show countdown
+display.scroll("321")
+
+# Wait a few, tense moments...
+delay_time = random.ranrange(1000, 5000)
+sleep(delay_time)
+
+# Display an Image!
+display.show(Image.TARGET)
+
+# Save start time
+start_time = running_time()
+
+#Wait for a button press
+while True:
+    if button_a.was_pressed() or button_b.was_pressed(): break
+    
+# Calculate the reaction time
+reaction_time = running_time - start_time
+
+#Display the result
+display.scroll(str(reaction_time))
