@@ -1,0 +1,27 @@
+from microbit import*
+
+Center = 2
+while True:
+    # Get the raw value (at rest it's 0-1023)
+    tilt = accelerometer.get_x()
+    
+    # Scale the value to 0-9
+    scaled = (tilt / 1024) * 10
+    
+    #integer
+    scaled = int(scaled)
+    
+    # Use +/- scaled value to set colum.
+    #Bubble at center of display when scaled is 0.
+    column = Center - scaled
+    
+    # Don't go past edges
+    if column > 4:
+        column = 4
+    elif column < 0:
+        column = 0
+    
+    display.clear()
+    
+    display.set_pixel(column, 4, 9)
+    
